@@ -6,11 +6,14 @@
 
 | 路徑 | 用途 |
 | --- | --- |
-| `Problems/xxxx-slug/` | **各題題目**。一題一個資料夾，內含三個檔案（見下表） |
-| `Inputs/xxxx-slug.json` | **各題輸入內容**。一題一個 JSON，整理該題所有案例（格式見下方） |
-| `Core/` | 框架本身：題目介面、自動註冊、執行器、JSON 讀寫工具，以及共用型別（`ListNode`） |
+| `LeetCodePractice.slnx` | 方案檔，只包含 `src/LeetCodePractice` 一個專案 |
+| `src/LeetCodePractice/` | 專案本體：`.csproj`、`Program.cs`（進入點），以及下面三個資料夾 |
+| `src/LeetCodePractice/Problems/xxxx-slug/` | **各題題目**。一題一個資料夾，內含三個檔案（見下表） |
+| `src/LeetCodePractice/Inputs/xxxx-slug.json` | **各題輸入內容**。一題一個 JSON，整理該題所有案例（格式見下方） |
+| `src/LeetCodePractice/Core/` | 框架本身：題目介面、自動註冊、執行器、JSON 讀寫工具，以及共用型別（`ListNode`） |
 | `Templates/` | 手動新增題目用的範本（Markdown，程式碼放在區塊內，不會被編譯） |
-| `Program.cs` | 進入點 |
+
+下文提到的 `Problems/`、`Inputs/`、`Core/` 都是相對於 `src/LeetCodePractice/` 的路徑。
 
 `xxxx` 是 4 碼題號、`slug` 是 LeetCode 網址上的題目名稱（例如 `0001-two-sum`）。
 `Problems/` 與 `Inputs/` 使用**同一個名稱**，一眼就能對應。
@@ -45,17 +48,20 @@
 ## 執行方式
 
 ```powershell
-dotnet run                 # 列出題目並詢問題號
-dotnet run -- 1            # 執行第 1 題的所有案例
-dotnet run -- list         # 只列出已註冊的題目
+dotnet build                                      # 建置整個方案
+dotnet run --project src/LeetCodePractice         # 列出題目並詢問題號
+dotnet run --project src/LeetCodePractice -- 1    # 執行第 1 題的所有案例
+dotnet run --project src/LeetCodePractice -- list # 只列出已註冊的題目
 ```
+
+也可以先 `cd src/LeetCodePractice`，之後就能直接用 `dotnet run -- 1`。
 
 ## 日常流程
 
 1. 提供題目敘述與範例數據 → 建立該題的 `README.md`（Markdown）與 `Inputs/xxxx-slug.json`。
 2. 提供官方 `Solution` 骨架 → 建立 `Solution.cs`（與官方一模一樣）與 `Problem.cs`。
 3. 編輯 `Solution.cs`，把 `namespace` 那一行**以下的全部內容**複製到 LeetCode。
-4. 執行 `dotnet run -- <題號>` 在本機檢查。
+4. 執行 `dotnet run --project src/LeetCodePractice -- <題號>` 在本機檢查。
 
 題目會由 `ProblemRegistry` 反射自動註冊，不需要手動登記。
 

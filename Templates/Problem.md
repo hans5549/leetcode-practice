@@ -1,6 +1,6 @@
 # Problem.cs 範本
 
-複製到 `Problems/xxxx-slug/Problem.cs`，修改 namespace（例如 `P0000` → `P0015`）、`Id`、`Title`，
+複製到 `src/LeetCodePractice/Problems/xxxx-slug/Problem.cs`，修改 namespace（例如 `P0000` → `P0015`）、`Id`、`Title`，
 以及 `Input` 與 `Run` 的內容。
 
 ```csharp
@@ -34,4 +34,4 @@ public sealed class Problem : IProblem
 
 - 這是本機執行用的配接，**不需要複製到 LeetCode**。
 - `Input` 的屬性對應 LeetCode 方法的參數，名稱用 PascalCase，對應案例 JSON 的 camelCase（`Nums` ↔ `nums`）。
-- 對應的案例檔是 `Inputs/xxxx-slug.json`，格式見根目錄的 `README.md`。
+- 對應的案例檔是 `src/LeetCodePractice/Inputs/xxxx-slug.json`，格式見根目錄的 `README.md`。

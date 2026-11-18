@@ -11,11 +11,12 @@ Problem: $ARGUMENTS (if omitted, use the problem currently being discussed, or t
 
 ## Steps
 
-1. Read `Problems/xxxx-slug/README.md`, `Problems/xxxx-slug/Solution.cs`, and `Inputs/xxxx-slug.json`.
+1. Read `Problems/xxxx-slug/README.md`, `Problems/xxxx-slug/Solution.cs`, and `Inputs/xxxx-slug.json` (all under
+   `src/LeetCodePractice/`).
 2. Run `dotnet build`.
    - If it fails to compile, explain in words which line, what the compiler complains about, and the C# concept behind
      it, so the user can fix it themselves.
-3. Run `dotnet run -- <id>`. The runner only prints results and **does not compare them with expected answers**, so
+3. Run `dotnet run --project src/LeetCodePractice -- <id>`. The runner only prints results and **does not compare them with expected answers**, so
    compare each case's Output with the expected Output in the README yourself. When the statement says "any order is
    fine", a different order is not an error.
 4. Branch on the result:

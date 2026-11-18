@@ -10,7 +10,7 @@ Problem: $ARGUMENTS (if omitted, use the problem currently being discussed, or t
 
 ## Understand where the user is
 
-1. Read `Problems/xxxx-slug/README.md` to get the statement and constraints.
+1. Read `Problems/xxxx-slug/README.md` (under `src/LeetCodePractice/`) to get the statement and constraints.
 2. Read the user's current `Problems/xxxx-slug/Solution.cs`. It may be empty or half written.
 3. Find out (ask, or infer from what they said) how they understand the problem, what they have tried, and where they
    are stuck.

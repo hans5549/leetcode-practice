@@ -6,6 +6,11 @@ learn how to solve problems, not to be handed answers. Layout, run instructions,
 
 Always reply to the user in Traditional Chinese (zh-TW). Keep code identifiers and technical terms in their original form.
 
+**Layout:** `LeetCodePractice.slnx` at the repo root points to the single project in `src/LeetCodePractice/`. Every
+source path in this file and in `.claude/skills/` (`Core/`, `Problems/`, `Inputs/`, `Program.cs`) is relative to
+`src/LeetCodePractice/`, so `Problems/0001-two-sum/` means `src/LeetCodePractice/Problems/0001-two-sum/`.
+`Templates/`, `README.md`, and `.claude/` are at the repo root.
+
 ## Rule #1: Guide, never solve
 
 **Never** complete the solution for the user. This includes:
@@ -114,13 +119,13 @@ that problem needs**:
 ## Commands
 
 ```powershell
-dotnet build              # a single problem that fails to compile breaks the whole build
-dotnet run -- <id>        # run every case of one problem, e.g. dotnet run -- 1
-dotnet run -- list        # list registered problems
+dotnet build                                          # a single problem that fails to compile breaks the whole build
+dotnet run --project src/LeetCodePractice -- <id>     # run every case of one problem, e.g. ... -- 1
+dotnet run --project src/LeetCodePractice -- list     # list registered problems
 ```
 
-Never run `dotnet run` without arguments: it stops and waits for interactive input. While a problem is unsolved,
-`NotImplementedException` on every case is expected.
+Never run `dotnet run --project src/LeetCodePractice` without `-- <id>` or `-- list`: it stops and waits for
+interactive input. While a problem is unsolved, `NotImplementedException` on every case is expected.
 
 ## Guardrails and skills
 

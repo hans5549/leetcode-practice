@@ -10,6 +10,8 @@ What the user provided: $ARGUMENTS, plus any problem text pasted in the conversa
 
 Add only this problem's files. Do not touch other problems, `Program.cs`, `Templates/`, or the root `README.md`.
 Problems register themselves through `ProblemRegistry`. Follow the conventions in `CLAUDE.md`.
+Every `Problems/`, `Inputs/`, and `Core/` path below is relative to `src/LeetCodePractice/`: create the files there, not
+at the repo root. (`Templates/` and the root `README.md` are at the repo root.)
 
 ## 1. Make sure you have everything
 
@@ -73,7 +75,7 @@ Chinese comments and labels from those files as they are.
 ## 4. Verify
 
 1. `dotnet build` must succeed.
-2. `dotnet run -- <id>`: every case showing `NotImplementedException` is expected at this point (nothing is solved yet).
+2. `dotnet run --project src/LeetCodePractice -- <id>`: every case showing `NotImplementedException` is expected at this point (nothing is solved yet).
    What you are checking is that the problem is registered, the case JSON parses, and the `Input` conversion does not
    throw.
 

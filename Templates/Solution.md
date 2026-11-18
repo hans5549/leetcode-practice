@@ -1,6 +1,6 @@
 # Solution.cs 範本
 
-複製到 `Problems/xxxx-slug/Solution.cs`，把 `P0000` 換成 4 碼題號，並貼上 LeetCode 官方提供的方法簽章。
+複製到 `src/LeetCodePractice/Problems/xxxx-slug/Solution.cs`，把 `P0000` 換成 4 碼題號，並貼上 LeetCode 官方提供的方法簽章。
 
 ```csharp
 namespace LeetCodePractice.Problems.P0000;
