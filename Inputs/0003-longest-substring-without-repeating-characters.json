@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Example 1",
+    "input": { "s": "abcabcbb" }
+  },
+  {
+    "name": "Example 2",
+    "input": { "s": "bbbbb" }
+  },
+  {
+    "name": "Example 3",
+    "input": { "s": "pwwkew" }
+  }
+]
