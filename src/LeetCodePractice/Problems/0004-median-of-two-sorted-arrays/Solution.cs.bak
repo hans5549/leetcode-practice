@@ -1,0 +1,24 @@
+namespace LeetCodePractice.Problems.P0004;
+
+public class Solution {
+    public double FindMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] mixNums = [..nums1, ..nums2];
+        mixNums.Sort();
+
+        // 偶數
+        if ((mixNums.Length % 2) == 0)
+        {
+            int index = (mixNums.Length / 2)-1;
+            double x = (double)mixNums[index];
+            double y = (double)mixNums[index+1];
+            return (x + y) / 2;
+
+        }
+        // 基數
+        else
+        {
+            int index = (mixNums.Length / 2) - 1;
+            return (double)mixNums[index+1];
+        }
+    }
+}
