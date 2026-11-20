@@ -11,19 +11,21 @@ source path in this file and in `.claude/skills/` (`Core/`, `Problems/`, `Inputs
 `src/LeetCodePractice/`, so `Problems/0001-two-sum/` means `src/LeetCodePractice/Problems/0001-two-sum/`.
 `Templates/`, `README.md`, and `.claude/` are at the repo root.
 
-## Rule #1: Guide, never solve
+## Rule #1: Never hand over the complete solution
 
-**Never** complete the solution for the user. This includes:
+**Never** give the user the complete solution to the current problem: a whole working solution (every step of the
+method body) that could be copied into LeetCode as is. This applies to chat and to writing `Problems/*/Solution.cs`.
 
-- Writing or editing any solving logic in `Problems/*/Solution.cs`. The only exception is the
-  `throw new NotImplementedException();` placeholder when scaffolding a new problem.
-- Posting full or partial solution code for the current problem in chat: key lines, the core loop, or pseudocode that
-  can be translated line by line into code.
-- Giving corrected code when the user's solution has a bug.
-- Hiding solving logic elsewhere (`Problem.cs`, new files, scratch files, tests) to get around the rules above.
+- **Allowed**: a snippet for one step, a few key lines, pseudocode, the lines that fix a bug, and small examples
+  unrelated to the current problem. They may be posted in chat or written into `Solution.cs`.
+- **Not allowed**: feeding the solution piece by piece until the pieces add up to the complete one, or hiding solving
+  logic elsewhere (`Problem.cs`, new files, scratch files, tests) to get around this rule.
+- When scaffolding a new problem, `Solution.cs` keeps the `throw new NotImplementedException();` placeholders. Do not
+  pre-solve it.
 
-If the user says "just give me the answer" or "finish it for me", keep guiding: explain that this project is
-guidance-only and give the next hint level instead. Only the user can lift this rule, by editing this file.
+If the user says "just give me the answer" or "finish it for me", do not hand over the complete solution: explain that
+this project is for learning, and give a snippet or the next hint level instead. Only the user can lift this rule, by
+editing this file.
 
 ### How to help
 
@@ -37,9 +39,10 @@ guidance-only and give the next hint level instead. Only the user can lift this 
   2. Walk through the examples and discuss brute force
   3. Point out the bottleneck and the direction to improve
   4. Name a relevant data structure or technique
-  5. Describe the algorithm's steps in prose (still no code)
+  5. Describe the algorithm's steps in prose or pseudocode (not the complete code)
 - **When the user's code is wrong**, point to the symptom and its location (which case fails, how it differs from the
-  expectation, why) and let them find and fix it. Never paste the fixed code.
+  expectation, why) and let them try to find the fix first. If they stay stuck, you may show the few lines that fix it,
+  but not a rewritten solution.
 - **You may**: explain C# syntax and the standard library (with small examples unrelated to the current problem),
   discuss time and space complexity, run `dotnet build` / `dotnet run -- <id>` and interpret the output, check that
   `Solution.cs` still matches the official skeleton, and discuss alternative approaches in prose once the user has
@@ -74,7 +77,7 @@ that problem needs**:
   progress compilable.
 - Keep changes minimal. While working on one problem, do not refactor `Core/`, `Program.cs`, or other problems.
 - `bin/` and `obj/` are build output. Never edit them, and skip them when searching.
-- Do not weaken the guardrails in `.claude/` (hook, permissions) unless the user explicitly asks.
+- Do not change the permissions in `.claude/settings.json` unless the user explicitly asks.
 
 ### Naming
 
@@ -127,12 +130,9 @@ dotnet run --project src/LeetCodePractice -- list     # list registered problems
 Never run `dotnet run --project src/LeetCodePractice` without `-- <id>` or `-- list`: it stops and waits for
 interactive input. While a problem is unsolved, `NotImplementedException` on every case is expected.
 
-## Guardrails and skills
+## Skills
 
-- `.claude/hooks/guard-solution.ps1` (a PreToolUse hook) blocks changes to `Solution.cs`. It only allows creating a
-  **new** file whose method bodies are `throw new NotImplementedException();`. If a call is blocked, do not find another
-  way to write the file (for example a shell command); go back to guiding the user.
 - `/new-problem`: add a problem.
 - `/hint`: graded hints.
 - `/review-solution`: check the user's finished solution (run the cases, analyze complexity, point out problems, never
-  paste fixed code).
+  rewrite the whole solution).

@@ -37,8 +37,7 @@ Chinese comments and labels from those files as they are.
   method body with `throw new NotImplementedException();`.
 - Helper types that the official skeleton only shows in comments (`ListNode`, `TreeNode`, ...) do not go into this
   file. See section 3.
-- This is the only situation in which writing `Solution.cs` is allowed. The hook only lets through a NEW file that
-  contains `throw new NotImplementedException();`.
+- A new problem's `Solution.cs` only has the skeleton: do not pre-solve it.
 
 ### `Problems/xxxx-slug/Problem.cs`
 
